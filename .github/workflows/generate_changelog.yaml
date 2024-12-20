@@ -1,14 +1,12 @@
 # Название workflow, описывает его цель
 name: Generate Changelog  
 
-# Указывает событие, при котором будет запускаться workflow
 on:
   push:
   workflow_dispatch:
   release:
     types: [published]
 
-# Определяет задачи, которые будут выполнены в рамках workflow
 jobs:
   build:
     runs-on: ubuntu-latest  
@@ -18,17 +16,15 @@ jobs:
         with:
           fetch-depth: 0  
 
-      # Название шага
       - name: Download and Install git-cliff
         run: |  
           curl -L "https://github.com/orhun/git-cliff/releases/download/v2.2.1/git-cliff-2.2.1-x86_64-unknown-linux-gnu.tar.gz" -o git-cliff.tar.gz  
           tar -xzf git-cliff.tar.gz  
           mv git-cliff-2.2.1/git-cliff /usr/local/bin/  
 
-      # Шаг для генерации файла CHANGELOG.md с указанием хэша коммита и ссылок на GitHub
       - name: Generate Changelog
         run: git-cliff --config cliff.toml --output CHANGELOG.md
-      # Шаг для коммита изменений
+     
       - name: Commit Changelog
         run: |  
           git config --global user.name 'github-actions'
