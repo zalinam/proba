@@ -6,4 +6,4 @@ format = "[- {hash:7} ({url}) {message}]"
 # Указываем настройки репозитория
 [repository]
 owner = "zalinam"
-name = "<proba>"
+name = "proba"
