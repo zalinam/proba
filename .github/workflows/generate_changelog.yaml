@@ -25,10 +25,9 @@ jobs:
           tar -xzf git-cliff.tar.gz  
           mv git-cliff-2.2.1/git-cliff /usr/local/bin/  
 
-      # Шаг для генерации файла CHANGELOG.md с указанием хэша коммита
+      # Шаг для генерации файла CHANGELOG.md с указанием хэша коммита и ссылок на GitHub
       - name: Generate Changelog
-        run: git-cliff --config cliff.toml --output CHANGELOG.md --header "### Коммиты" --merge-changes true --issue-prefix "GH-"
-
+        run: git-cliff --config cliff.toml --output CHANGELOG.md
       # Шаг для коммита изменений
       - name: Commit Changelog
         run: |  
