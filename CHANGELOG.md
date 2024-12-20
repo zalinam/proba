@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🚀 Features
+
+- *(app)* Тест 4
+
 ## [3] - 2024-12-20
 
 ### 🚀 Features
