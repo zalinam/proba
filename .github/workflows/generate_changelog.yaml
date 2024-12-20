@@ -7,8 +7,8 @@ on:
   # Событие push в репозиторий  
   push:
     # Указывает, что workflow будет запускаться только при пушах в ветку main  
-    branches:
-      - main  
+    # branches:
+    #   - main  
   # Событие создания релиза
   workflow_dispatch:
   release:
