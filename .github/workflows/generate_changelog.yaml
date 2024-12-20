@@ -10,8 +10,9 @@ on:
     branches:
       - main  
   # Событие создания релиза
+  workflow_dispatch:
   release:
-    types: [created]
+    types: [published]
 
 
 # Определяет задачи, которые будут выполнены в рамках workflow
