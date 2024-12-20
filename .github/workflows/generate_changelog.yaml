@@ -24,11 +24,13 @@ jobs:
 
       - name: Generate Changelog
         run: git-cliff --config cliff.toml --output CHANGELOG.md
-     
-      - name: Commit Changelog
+
+      - name: Publish CHANGELOG.md to GitHub Pages
         run: |  
+          mkdir -p docs  # Создание директории, если она не существует
+          mv CHANGELOG.md docs/  # Перемещение CHANGELOG.md в директорию docs
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add CHANGELOG.md
-          git commit -m "Обновление CHANGELOG.md"
-          git push https://github.com/${{ github.repository }}.git HEAD:main
+          git add docs/CHANGELOG.md
+          git commit -m "Publish CHANGELOG.md to GitHub Pages"
+          git push https://github.com/${{ github.repository }}.git HEAD:main  # Или HEAD:gh-pages, если у вас отдельная ветка для GitHub Pages
