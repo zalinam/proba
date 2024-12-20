@@ -9,6 +9,9 @@ on:
     # Указывает, что workflow будет запускаться только при пушах в ветку main  
     branches:
       - main  
+  # Событие создания релиза
+  release:
+    types: [created]
 
 
 # Определяет задачи, которые будут выполнены в рамках workflow
@@ -37,7 +40,7 @@ jobs:
     # Шаг для генерации файла CHANGELOG.md
     - name: Generate Changelog
       # Запуск git-cliff с указанием конфигурационного файла и выходного файла
-      run: git-cliff --config cliff.toml --output CHANGELOG.md  
+      run: git-cliff --config cliff.toml --output CHANGELOG.md
      
     # Шаг для коммита изменений
     - name: Commit Changelog
@@ -47,4 +50,4 @@ jobs:
         git config --global user.email 'github-actions@github.com'
         git add CHANGELOG.md
         git commit -m "Обновление CHANGELOG.md"
-        git push https://github.com/${{ github.repository }}.git HEAD:main  
+        git push https://github.com/${{ github.repository }}.git HEAD:main
